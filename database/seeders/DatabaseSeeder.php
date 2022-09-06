@@ -78,41 +78,41 @@ class DatabaseSeeder extends Seeder
         Gallery::create(['product_id' => '3']);
 
         Picture::create([
-            "name" => "storage/img/products/rtx3090(1).jpg",
+            "name" => "/storage/img/products/rtx3090(1).jpg",
             "gallery_id" => "1"
         ]);
         Picture::create([
-            "name" => "storage/img/products/rtx3090(2).jpg",
+            "name" => "/storage/img/products/rtx3090(2).jpg",
             "gallery_id" => "1"
         ]);
         Picture::create([
-            "name" => "storage/img/products/rtx3090(3).jpg",
+            "name" => "/storage/img/products/rtx3090(3).jpg",
             "gallery_id" => "1"
         ]);
 
         Picture::create([
-            "name" => "storage/img/products/ryzen5(1).jpg",
+            "name" => "/storage/img/products/ryzen5(1).jpg",
             "gallery_id" => "2"
         ]);
         Picture::create([
-            "name" => "storage/img/products/ryzen5(2).jpg",
+            "name" => "/storage/img/products/ryzen5(2).jpg",
             "gallery_id" => "2"
         ]);
         Picture::create([
-            "name" => "storage/img/products/ryzen5(3).jpg",
+            "name" => "/storage/img/products/ryzen5(3).jpg",
             "gallery_id" => "2"
         ]);
 
         Picture::create([
-            "name" => "storage/img/products/b450m(1).jpg",
+            "name" => "/storage/img/products/b450m(1).jpg",
             "gallery_id" => "3"
         ]);
         Picture::create([
-            "name" => "storage/img/products/b450m(2).jpg",
+            "name" => "/storage/img/products/b450m(2).jpg",
             "gallery_id" => "3"
         ]);
         Picture::create([
-            "name" => "storage/img/products/b450m(3).jpg",
+            "name" => "/storage/img/products/b450m(3).jpg",
             "gallery_id" => "3"
         ]);
     }

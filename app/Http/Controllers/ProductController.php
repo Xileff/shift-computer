@@ -18,6 +18,10 @@ class ProductController extends Controller
 
     public function details($slug)
     {
-        return Product::where('slug', $slug)->get();
+        $product = Product::firstWhere('slug', $slug);
+        return view('layouts.product', [
+            'title' => $product->title,
+            'product' => $product
+        ]);
     }
 }

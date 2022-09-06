@@ -118,7 +118,7 @@
                 @foreach ($products as $product)
                     <div class="col-4 col-md-2 p-1">
                         <a href="/products/{{ $product->slug }}">
-                            <div class="card product rounded-3 shadow-sm">
+                            <div class="card product rounded-3 shadow-sm h-100">
                                 @if ($product->discounted_price)
                                     <p class="discount-tag position-absolute bg-danger px-1 text-light fw-bold">
                                         {{ round((($product->price - $product->discounted_price) / $product->price) * 100, 2) }}%

@@ -1,0 +1,17 @@
+.detail-image-wrapper {
+    border-radius: 0.5rem;
+    width: 280px;
+}
+
+.detail-image {
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 0.5rem;
+}
+
+@media screen and (min-width: 992px) {
+    .detail-image-wrapper {
+        width: 350px;
+    }
+}
