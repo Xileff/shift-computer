@@ -1,0 +1,36 @@
+.product {
+    font-size: 0.8rem;
+}
+
+.product-body {
+    padding: 0.3rem 0.6rem;
+}
+
+.product-image {
+    object-fit: contain;
+    object-position: center;
+    height: 110px;
+}
+
+.discount-tag {
+    border-top-left-radius: 0.3rem;
+}
+
+.text-discount {
+    font-size: 0.4rem;
+    text-decoration: line-through;
+}
+
+.text-price {
+    font-size: 0.7rem;
+}
+
+@media screen and (min-width: 576px) {
+    .text-discount {
+        font-size: 0.7rem;
+    }
+    
+    .text-price {
+        font-size: 0.8rem;
+    }   
+}

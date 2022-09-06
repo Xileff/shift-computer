@@ -1,0 +1,15 @@
+.card-category {
+    border-radius: 0.4rem;
+}
+
+.category-image {
+    object-fit: contain;
+    object-position: center;
+    height: 100px;
+}
+
+.card-category:hover .category-image {
+    transition: 300ms;
+    transform: scale(1.05);
+}
+

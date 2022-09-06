@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ProductController;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.homepage', [
-        "title" => "CompuShifu"
-    ]);
-});
+// Homepage
+Route::get('/', [ProductController::class, 'index']);
+
+// Detail produk
+Route::get('/products/{product:slug}', [ProductController::class, 'details']);

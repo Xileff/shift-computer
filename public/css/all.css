@@ -1,0 +1,12 @@
+html {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+a, a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+p {
+    margin-bottom: 0;
+}

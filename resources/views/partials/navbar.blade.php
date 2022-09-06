@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold fs-3 text-success" href="#">CompuShifu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -28,10 +28,14 @@
                 </li>
             </ul>
             <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <a class="nav-link" aria-current="page" href="#">Login</a>
+            <ul class="navbar-nav mb-0">
+                <li class="nav-item my-2 mx-1">
+                    <a class="btn btn-success rounded-4" aria-current="page" href="#">Login</a>
+                </li>
+            </ul>
         </div>
     </div>
 </nav>
