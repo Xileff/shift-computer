@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light fixed-top shadow-sm">
     <div class="container-fluid">
         <a class="navbar-brand fw-bold fs-3 text-success" href="/">CompuShifu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

@@ -30,87 +30,17 @@
         <div class="container">
             <h1 class="fw-bold">Our catalogues</h1>
             <div class="row my-2 py-2 text-center mb-4" id="categoriesList">
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/cpu.png" class="card-img-top category-image"
-                                alt="">
-                            <p>CPU</p>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/gpu.png" class="card-img-top category-image"
-                                alt="">
-                            <P>GPU</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/ram.png" class="card-img-top category-image"
-                                alt="">
-                            <P>RAM</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/motherboard.png" class="card-img-top category-image"
-                                alt="">
-                            <P>Motherboard</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/ssd.png" class="card-img-top category-image"
-                                alt="">
-                            <P>SSD</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/hdd.png" class="card-img-top category-image"
-                                alt="">
-                            <P>HDD</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/psu.png" class="card-img-top category-image"
-                                alt="">
-                            <P>PSU</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/casing.png" class="card-img-top category-image"
-                                alt="">
-                            <P>Casing</P>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-3 col-md-2 p-1">
-                    <a href="#">
-                        <div class="card card-category">
-                            <img src="storage/img/carousel_category/monitor.png" class="card-img-top category-image"
-                                alt="">
-                            <P>Monitor</P>
-                        </div>
-                    </a>
-                </div>
+
+                @foreach ($categories as $category)
+                    <div class="col-3 col-md-2 p-1">
+                        <a href="/categories/{{ $category->slug }}">
+                            <div class="card card-category">
+                                <img src="{{ $category->picture }}" class="card-img-top category-image" alt="">
+                                <p>{{ $category->name }}</p>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach
             </div>
 
             <h1 class="fw-bold">Latest Products</h1>
@@ -126,8 +56,8 @@
                                     </p>
                                 @endif
                                 <div class="p-1">
-                                    <img src="{{ $product->gallery->pictures[0]->name }}"
-                                        class="card-img-top product-image" alt="">
+                                    <img src="{{ $product->gallery->pictures[0]->name }}" class="card-img-top product-image"
+                                        alt="">
                                 </div>
                                 <div class="product-body">
                                     <p class="fw-bold">{{ $product->name }}</p>

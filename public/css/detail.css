@@ -1,17 +1,89 @@
 .detail-image-wrapper {
     border-radius: 0.5rem;
     width: 280px;
+    height: 280px;
 }
 
 .detail-image {
+    height: 100%;
     width: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
     border-radius: 0.5rem;
+}
+
+/* Hide the images by default */
+.detail-slides {
+    display: none;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+/* Next & prev buttons */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 40%;
+    width: auto;
+    padding: 16px;
+    margin-top: -50px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.4);
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 0 3px 3px 0;
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+.prev {
+    left: 0;
+    border-radius: rgba(0, 0, 0, 0.8);
+}
+
+.next {
+    right: 0;
+    border-radius: rgba(0, 0, 0, 0.8);
+}
+
+.prev:hover, .next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.numbertext {
+    color: #000;
+    font-size: 12px;
+    padding: 8px 12px;
+    position: absolute;
+    top: 0;
+}
+
+.row-thumbnail:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.col-thumbnail {
+    float: left;
+    width: 100px;
+}
+
+/* Transparency */
+.demo {
+    opacity: 0.6;
+    object-fit: cover;
+}
+
+.active, .demo:hover {
+    opacity: 1;
 }
 
 @media screen and (min-width: 992px) {
     .detail-image-wrapper {
         width: 350px;
+        height: 350px;
     }
 }

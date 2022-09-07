@@ -29,9 +29,59 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('password')
         ]);
 
-        Category::create(["name" => "GPU"]);
-        Category::create(["name" => "CPU"]);
-        Category::create(["name" => "Motherboard"]);
+        Category::create([
+            "name" => "CPU",
+            "picture" => "/storage/img/carousel_category/cpu.png",
+            "slug" => "cpu"
+        ]);
+
+        Category::create([
+            "name" => "GPU",
+            "picture" => "/storage/img/carousel_category/gpu.png",
+            "slug" => "gpu"
+        ]);
+
+        Category::create([
+            "name" => "RAM",
+            "picture" => "/storage/img/carousel_category/ram.png",
+            "slug" => "ram"
+        ]);
+
+        Category::create([
+            "name" => "Motherboard",
+            "picture" => "/storage/img/carousel_category/motherboard.png",
+            "slug" => "motherboard"
+        ]);
+
+        Category::create([
+            "name" => "SSD",
+            "picture" => "/storage/img/carousel_category/ssd.png",
+            "slug" => "ssd"
+        ]);
+
+        Category::create([
+            "name" => "HDD",
+            "picture" => "/storage/img/carousel_category/hdd.png",
+            "slug" => "hdd"
+        ]);
+
+        Category::create([
+            "name" => "PSU",
+            "picture" => "/storage/img/carousel_category/psu.png",
+            "slug" => "psu"
+        ]);
+
+        Category::create([
+            "name" => "Casing",
+            "picture" => "/storage/img/carousel_category/casing.png",
+            "slug" => "casing"
+        ]);
+
+        Category::create([
+            "name" => "Monitor",
+            "picture" => "/storage/img/carousel_category/monitor.png",
+            "slug" => "monitor"
+        ]);
 
         Brand::create(["name" => "Nvidia"]);
         Brand::create(["name" => "AMD"]);
@@ -89,6 +139,10 @@ class DatabaseSeeder extends Seeder
             "name" => "/storage/img/products/rtx3090(3).jpg",
             "gallery_id" => "1"
         ]);
+        Picture::create([
+            "name" => "/storage/img/products/rtx3090(4).jpg",
+            "gallery_id" => "1"
+        ]);
 
         Picture::create([
             "name" => "/storage/img/products/ryzen5(1).jpg",
@@ -100,6 +154,10 @@ class DatabaseSeeder extends Seeder
         ]);
         Picture::create([
             "name" => "/storage/img/products/ryzen5(3).jpg",
+            "gallery_id" => "2"
+        ]);
+        Picture::create([
+            "name" => "/storage/img/products/ryzen5(4).jpg",
             "gallery_id" => "2"
         ]);
 

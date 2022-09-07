@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Category;
 
 class ProductController extends Controller
 {
@@ -12,7 +13,8 @@ class ProductController extends Controller
     {
         return view('layouts.homepage', [
             "title" => "CompuShifu",
-            "products" => Product::latest('updated_at')->get()
+            "products" => Product::latest('updated_at')->get(),
+            "categories" => Category::all()
         ]);
     }
 
