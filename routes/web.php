@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
@@ -18,5 +19,8 @@ use Illuminate\Support\Facades\Route;
 // Homepage
 Route::get('/', [ProductController::class, 'index']);
 
-// Detail produk
+// Product details
 Route::get('/products/{product:slug}', [ProductController::class, 'details']);
+
+// Products per category
+Route::get('/categories/{category:slug}', [CategoryController::class, 'index']);

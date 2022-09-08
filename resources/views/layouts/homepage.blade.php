@@ -1,8 +1,8 @@
 @extends('main')
 @section('section')
-    <link rel="stylesheet" href="css/carousel.css">
-    <link rel="stylesheet" href="css/card_category.css">
-    <link rel="stylesheet" href="css/product.css">
+    <link rel="stylesheet" href="/css/carousel.css">
+    <link rel="stylesheet" href="/css/card_category.css">
+    <link rel="stylesheet" href="/css/product.css">
     <div class="container-fluid mt-4 pt-5">
         <div id="carouselControl" class="carousel slide mb-4" data-bs-ride="carousel">
             <div class="carousel-inner">
@@ -28,8 +28,8 @@
         </div>
 
         <div class="container">
-            <h1 class="fw-bold">Our catalogues</h1>
-            <div class="row my-2 py-2 text-center mb-4" id="categoriesList">
+            <h1 class="fw-bold" data-aos="fade-down">Our catalogues</h1>
+            <div class="row my-2 py-2 text-center mb-4" id="categoriesList" data-aos="fade-down">
 
                 @foreach ($categories as $category)
                     <div class="col-3 col-md-2 p-1">
@@ -43,8 +43,8 @@
                 @endforeach
             </div>
 
-            <h1 class="fw-bold">Latest Products</h1>
-            <div class="row my-2 py-2 text-center mb-4">
+            <h1 class="fw-bold" data-aos="fade-up">Latest Products</h1>
+            <div class="row my-2 py-2 text-center mb-4" data-aos="fade-up">
                 @foreach ($products as $product)
                     <div class="col-4 col-md-2 p-1">
                         <a href="/products/{{ $product->slug }}">
@@ -59,13 +59,15 @@
                                     <img src="{{ $product->gallery->pictures[0]->name }}" class="card-img-top product-image"
                                         alt="">
                                 </div>
-                                <div class="product-body">
+                                <div class="product-body h-100 d-flex flex-column">
                                     <p class="fw-bold">{{ $product->name }}</p>
-                                    @if ($product->discounted_price)
-                                        <span
-                                            class="text-discount fw-bold text-muted text-striped">{{ $product->price }}</span>
-                                    @endif
-                                    <p class="text-success fw-bold text-price">{{ $product->discounted_price }}</p>
+                                    <div class="mt-auto">
+                                        @if ($product->discounted_price)
+                                            <span
+                                                class="text-discount fw-bold text-muted text-striped">{{ $product->price }}</span>
+                                        @endif
+                                        <p class="text-success fw-bold text-price">{{ $product->discounted_price }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </a>

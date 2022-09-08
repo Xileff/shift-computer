@@ -20,7 +20,7 @@ class ProductController extends Controller
 
     public function details($slug)
     {
-        $product = Product::firstWhere('slug', $slug);
+        $product = Product::with(['category', 'brand'])->firstWhere('slug', $slug);
         return view('layouts.product', [
             'title' => $product->title,
             'product' => $product
