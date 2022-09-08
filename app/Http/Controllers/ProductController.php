@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Review;
 
 class ProductController extends Controller
 {
@@ -20,7 +21,9 @@ class ProductController extends Controller
 
     public function details($slug)
     {
-        $product = Product::with(['category', 'brand'])->firstWhere('slug', $slug);
+        $product = Product::with(['category', 'brand', 'reviews'])->firstWhere('slug', $slug);
+        // This may not be the best practice just yet(retrieeving the sum score of reviews)
+        $product->score = Review::where('product_id', $product->id)->sum('score') / 5;
         return view('layouts.product', [
             'title' => $product->title,
             'product' => $product

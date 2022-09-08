@@ -8,12 +8,12 @@
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <a href="#" class="">
-                        <img src="img/bannerAMD.jpg" class="d-block w-100 carousel-img " alt="nvidia">
+                        <img src="/assets/carousel/bannerAMD.jpg" class="d-block w-100 carousel-img " alt="nvidia">
                     </a>
                 </div>
                 <div class="carousel-item">
                     <a href="#" class="">
-                        <img src="img/bannerIntel.jpg" class="d-block w-100 carousel-img " alt="amd">
+                        <img src="/assets/carousel/bannerIntel.jpg" class="d-block w-100 carousel-img " alt="amd">
                     </a>
                 </div>
             </div>

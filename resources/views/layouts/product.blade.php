@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/css/rounded.css">
     <div class="container mt-5 pt-5">
         <div class="row pt-1">
-            <div class="col-md-5 d-flex justify-content-center position-relative flex-column p-0">
+            <div class="col-md-5 d-flex justify-content-center position-relative flex-column p-0 mb-5">
                 <div class="row w-100 ms-0 mb-2" data-aos="fade-right">
                     {{-- All images --}}
                     @foreach ($product->gallery->pictures as $picture)
@@ -17,7 +17,7 @@
                 </div>
 
                 {{-- Thumbnails --}}
-                <div class="row row-thumbnail" data-aos="fade-up">
+                <div class="row row-thumbnail d-flex justify-content-center" data-aos="fade-up">
                     @foreach ($product->gallery->pictures as $picture)
                         <div class="col-2 col-thumbnail">
                             <img src="{{ $product->gallery->pictures[$loop->index]->name }}" class="demo w-100 h-100 cursor"
@@ -32,8 +32,24 @@
             </div>
 
             {{-- Product Details --}}
-            <div class="col-md-7 d-flex flex-column" data-aos="fade-down">
-                <h3 class="fw-bold text-success montserrat">{{ $product->name }}</h3>
+            <div class="col-md-7 d-flex flex-column px-5" data-aos="fade-down">
+                <h3 class="fw-bold text-success poppins">{{ $product->name }}</h3>
+                <h4 class="poppins">{{ $product->price }}</h4>
+
+                {{-- Review --}}
+                <div class="d-flex justify-content-start">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($product->score > 1)
+                            <img src="/assets/reviews/star_full.png" class="img-fluid col-2" alt="">
+                        @elseif($product->score > 0 && $product->score < 1)
+                            <img src="/assets/reviews/star_half.png" class="img-fluid col-2" alt="">
+                        @else
+                            <span>empty star</span>
+                        @endif
+                        @php $product->score -= 1 @endphp
+                    @endfor
+                </div>
+
                 <div class="pt-1 pb-1">
                     <p>SKU : <span class="fw-bold">{{ $product->id }}</span></p>
                     <p>Weight : <span class="fw-bold">{{ $product->weight_in_grams }} gram</span></p>

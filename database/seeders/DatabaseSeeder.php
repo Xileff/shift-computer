@@ -10,6 +10,7 @@ use App\Models\Gallery;
 use App\Models\Picture;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Review;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
@@ -172,6 +173,22 @@ class DatabaseSeeder extends Seeder
         Picture::create([
             "name" => "/storage/img/products/b450m(3).jpg",
             "gallery_id" => "3"
+        ]);
+
+        Review::create([
+            "score" => "4",
+            "title" => "Review 1",
+            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sapiente veritatis earum. Non quae cum esse officiis quis. Aliquid, in.",
+            "user_id" => "1",
+            "product_id" => "1"
+        ]);
+
+        Review::create([
+            "score" => "5",
+            "title" => "Review 2",
+            "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sapiente veritatis earum. Non quae cum esse officiis quis. Aliquid, in.",
+            "user_id" => "1",
+            "product_id" => "1"
         ]);
     }
 }
