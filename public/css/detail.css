@@ -81,6 +81,19 @@
     opacity: 1;
 }
 
+/* Reviews */
+.row-stars {
+    width: 150px;
+}
+
+.review-list-stars {
+    width: 130px;
+}
+
+.row-stars img, .review-list-stars {
+    object-fit: contain;
+}
+
 @media screen and (min-width: 992px) {
     .detail-image-wrapper {
         width: 350px;

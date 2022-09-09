@@ -21,11 +21,16 @@ class ProductController extends Controller
 
     public function details($slug)
     {
-        $product = Product::with(['category', 'brand', 'reviews'])->firstWhere('slug', $slug);
-        // This may not be the best practice just yet(retrieeving the sum score of reviews)
-        $product->score = Review::where('product_id', $product->id)->sum('score') / 5;
+        $product = Product::with(['category', 'brand'])->firstWhere('slug', $slug);
+        // This may not be the best practice just yet(retrieeving the sum score of reviews and the reviews)
+
+        $reviewCount = Review::where('product_id', $product->id)->count();
+        $product->score = $reviewCount != 0 ?
+            (Review::where('product_id', $product->id)->sum('score') / $reviewCount)
+            : 0;
+        $product->reviews = Review::where('product_id', $product->id)->get();
         return view('layouts.product', [
-            'title' => $product->title,
+            'title' => "Jual $product->name",
             'product' => $product
         ]);
     }
