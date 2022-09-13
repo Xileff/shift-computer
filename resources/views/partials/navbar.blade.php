@@ -31,11 +31,27 @@
                 <input class="form-control me-2 rounded-4" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
-            <ul class="navbar-nav mb-0">
-                <li class="nav-item my-2 mx-1">
-                    <a class="btn btn-success rounded-4" aria-current="page" href="#">Login</a>
-                </li>
-            </ul>
+            @if (auth()->user())
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">{{ auth()->user()->name }}</a>
+                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                            <li><a href="#" class="dropdown-item">Profile</a></li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <li><button type="submit" class="dropdown-item text-danger">Log out</button></li>
+                            </form>
+                        </ul>
+                    </li>
+                </ul>
+            @else
+                <ul class="navbar-nav mb-0">
+                    <li class="nav-item my-2 mx-1">
+                        <a class="btn btn-success rounded-4" aria-current="page" href="/login">Login</a>
+                    </li>
+                </ul>
+            @endif
         </div>
     </div>
 </nav>

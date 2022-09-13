@@ -1,0 +1,9 @@
+.col-image {
+    background-image: url('/assets/login/motherboard.jpg');
+    object-fit: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    zoom: 0.8;
+    border-top-left-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
