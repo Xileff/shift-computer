@@ -14,3 +14,9 @@ a, a:hover {
 p {
     margin-bottom: 0;
 }
+
+@media screen and (min-width: 768px) {
+    .profile-temporary-style {
+        margin-left: -80px
+    }
+}

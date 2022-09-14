@@ -35,9 +35,19 @@
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">{{ auth()->user()->name }}</a>
-                        <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                            <li><a href="#" class="dropdown-item">Profile</a></li>
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <img class="img-fluid rounded-circle" width="40" src="{{ auth()->user()->picture }}"
+                                alt="user_profile">
+                        </a>
+                        <ul class="dropdown-menu end-0 profile-temporary-style" aria-labelledby="userDropdown">
+                            <li>
+                                <p class="dropdown-item poppins fw-bold text-success text-center">
+                                    {{ auth()->user()->username }}</p>
+                            </li>
+                            <div class="px-3">
+                                <hr class="nav-divider m-0">
+                            </div>
+                            <li><a href="/profile" class="dropdown-item">Profile</a></li>
                             <form action="/logout" method="post">
                                 @csrf
                                 <li><button type="submit" class="dropdown-item text-danger">Log out</button></li>

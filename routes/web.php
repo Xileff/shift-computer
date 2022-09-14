@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
@@ -35,3 +36,6 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
+
+// User Profile
+Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
