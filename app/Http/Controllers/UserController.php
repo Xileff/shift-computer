@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+use App\Models\User;
 
 class UserController extends Controller
 {
@@ -15,6 +17,16 @@ class UserController extends Controller
 
     public function update(Request $r)
     {
-        return dd($r);
+        $rules = [
+            'name' => 'required|between:2,255',
+            'date_of_birth' => 'date_format:Y-m-d',
+            'gender' => Rule::in(['0', '1'])
+        ];
+
+        $data = $r->validate($rules);
+
+        User::where('id', auth()->user()->id)->update($data);
+
+        return redirect()->intended('/profile')->with('success', 'Profile updated!');
     }
 }

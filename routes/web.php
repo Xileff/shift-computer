@@ -39,3 +39,4 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 
 // User Profile
 Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
+Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
