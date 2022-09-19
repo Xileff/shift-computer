@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light bg-light fixed-top shadow-sm">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold fs-3 text-success" href="/">CompuShifu</a>
+        <a class="navbar-brand fw-bold fs-3 text-success poppins" href="/">CompuShifu</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,8 +36,9 @@
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="userDropdown" role="button"
                             data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-fluid rounded-circle" width="40" src="{{ auth()->user()->picture }}"
-                                alt="user_profile">
+                            <img class="rounded-circle py-0"
+                                src="{{ auth()->user()->picture ? str_replace('public', '/storage', auth()->user()->picture) : '/assets/default.png' }}"
+                                alt="user_profile" style="width: 30px; height: 30px">
                         </a>
                         <ul class="dropdown-menu end-0 profile-temporary-style" aria-labelledby="userDropdown">
                             <li>
@@ -48,6 +49,9 @@
                                 <hr class="nav-divider m-0">
                             </div>
                             <li><a href="/profile" class="dropdown-item">Profile</a></li>
+                            @can('admin')
+                                <li><a href="/dashboard/products" class="dropdown-item">Admin Dashboard</a></li>
+                            @endcan
                             <form action="/logout" method="post">
                                 @csrf
                                 <li><button type="submit" class="dropdown-item text-danger">Log out</button></li>

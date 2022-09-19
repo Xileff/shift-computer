@@ -1,0 +1,21 @@
+img.user-profile {
+    width: 343.9px;
+    height: 343.9px;
+    max-height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+@media screen and (min-width: 768px){
+    img.user-profile {
+        width: 220px;
+        height: 220px;
+    }   
+}
+
+@media screen and (min-width: 992px) {
+    img.user-profile {
+        width: 350px;
+        height: 350px;
+    }
+}

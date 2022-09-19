@@ -10,8 +10,8 @@
                     @foreach ($product->gallery->pictures as $picture)
                         <div class="detail-image-wrapper detail-slides w-100 p-0">
                             <div class="numbertext">{{ $loop->iteration }}/{{ count($product->gallery->pictures) }}</div>
-                            <img src="{{ $product->gallery->pictures[$loop->index]->name }}" class="detail-image"
-                                alt="{{ $product->name }}">
+                            <img src="{{ str_replace('public', '/storage', $product->gallery->pictures[$loop->index]->name) }}"
+                                class="detail-image" alt="{{ $product->name }}">
                         </div>
                     @endforeach
                 </div>
@@ -20,8 +20,8 @@
                 <div class="row row-thumbnail d-flex justify-content-center" data-aos="fade-up">
                     @foreach ($product->gallery->pictures as $picture)
                         <div class="col-2 col-thumbnail">
-                            <img src="{{ $product->gallery->pictures[$loop->index]->name }}" class="demo w-100 h-100 cursor"
-                                onclick="currentSlide({{ $loop->iteration }})">
+                            <img src="{{ str_replace('public', '/storage', $product->gallery->pictures[$loop->index]->name) }}"
+                                class="demo w-100 h-100 cursor" onclick="currentSlide({{ $loop->iteration }})">
                         </div>
                     @endforeach
                 </div>

@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Product extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
     protected $guarded = ['id'];
     protected $with = ['gallery'];
 
@@ -29,5 +30,14 @@ class Product extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class, 'id');
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }

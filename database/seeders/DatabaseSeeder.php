@@ -27,10 +27,10 @@ class DatabaseSeeder extends Seeder
             'name' => 'Felix Savero',
             'username' => 'Styx',
             'email' => 'felixsavero@gmail.com',
-            'picture' => '/storage/img/profile/sasuke.jpg',
+            'picture' => null,
             'gender' => '0',
             'date_of_birth' => '2002-03-20',
-            'is_admin' => '0',
+            'is_admin' => '1',
             'password' => Hash::make('password')
         ]);
 

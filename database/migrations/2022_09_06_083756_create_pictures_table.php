@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->foreignId('gallery_id');
+            $table->foreignId('gallery_id')->nullable();
             $table->timestamps();
         });
     }

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->unique();
+            $table->text('name');
             $table->text('slug')->unique();
-            $table->foreignId('gallery_id')->unique();
+            $table->foreignId('gallery_id')->unique()->nullable();
             $table->integer('price');
             $table->integer('discounted_price');
             $table->integer('weight_in_grams');

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
@@ -19,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// User Routes
+
 // Homepage
 Route::get('/', [ProductController::class, 'index']);
 
@@ -29,7 +32,8 @@ Route::get('/products/{product:slug}', [ProductController::class, 'details']);
 Route::get('/categories/{category:slug}', [CategoryController::class, 'index']);
 
 // Login
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::get('/logout', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate'])->middleware('guest');
 Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
@@ -40,3 +44,8 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 // User Profile
 Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
 Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
+
+
+// Admin Routes
+Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/products', DashboardProductController::class)->middleware('admin');

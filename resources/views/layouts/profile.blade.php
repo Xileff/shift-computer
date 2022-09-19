@@ -1,6 +1,7 @@
 @extends('main')
 @section('section')
     <link rel="stylesheet" href="/css/rounded.css">
+    <link rel="stylesheet" href="/css/user_profile.css">
     <div class="container mt-5 pt-5 pb-5">
         {{-- Flash message --}}
         @if (session()->has('success'))
@@ -11,15 +12,16 @@
         @endif
         <h1 class="poppins fw-bold px-5">{{ auth()->user()->username }}</h1>
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{ auth()->user()->picture }}" alt="user_picture"
-                    class="img-fluid rounded-circle p-5 cursor-pointer picture-input">
+            <div class="col-md-4 d-flex justify-content-center">
+                <img src="{{ auth()->user()->picture ? str_replace('public', '/storage', auth()->user()->picture) : '/assets/default.png' }}"
+                    alt="user_picture" class="rounded-circle cursor-pointer picture-input user-profile">
             </div>
             <div class="col-md-8">
                 <form action="/profile" class="montserrat" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
-                    <input type="file" name="picture" id="picture" class="picture-input" hidden>
+                    <input type="file" accept="image/jpg, image/jpeg, image/png" name="picture" id="picture"
+                        class="picture-input" hidden>
                     <div class="mb-3">
                         <label for="name" class="form-label fw-bold">Name</label>
                         <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
@@ -30,8 +32,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="username" class="form-label fw-bold">Username</label>
-                        <input type="text" name="username" class="form-control"
-                            id="username
+                        <input type="text" name="username" class="form-control" id="username"
                             value="{{ auth()->user()->username }}" disabled>
                     </div>
                     <div class="mb-3">

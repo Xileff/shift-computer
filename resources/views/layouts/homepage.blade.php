@@ -56,8 +56,8 @@
                                     </p>
                                 @endif
                                 <div class="p-1">
-                                    <img src="{{ $product->gallery->pictures[0]->name }}" class="card-img-top product-image"
-                                        alt="">
+                                    <img src="{{ str_replace('public', '/storage', $product->gallery->pictures[0]->name) }}"
+                                        class="card-img-top product-image" alt="">
                                 </div>
                                 <div class="product-body h-100 d-flex flex-column">
                                     <p class="fw-bold">{{ $product->name }}</p>
