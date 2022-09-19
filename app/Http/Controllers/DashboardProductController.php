@@ -91,14 +91,14 @@ class DashboardProductController extends Controller
             $gallery->product()->associate($product);
             $product->gallery_id = $gallery->id;
 
+            // Insert pictures into storage
+            $pictures = [];
 
-            $pictures = [
-                Picture::create(['name' => $r->file('picture1')->store('public/img/products')]),
-                Picture::create(['name' => $r->file('picture2')->store('public/img/products')]),
-                Picture::create(['name' => $r->file('picture3')->store('public/img/products')]),
-                Picture::create(['name' => $r->file('picture4')->store('public/img/products')]),
-                Picture::create(['name' => $r->file('picture5')->store('public/img/products')])
-            ];
+            for ($i = 1; $i <= 5; $i++) {
+                if ($r->file("picture$i")) {
+                    array_push($pictures, Picture::create(['name' => $r->file("picture$i")->store('public/img/products')]));
+                }
+            }
 
             foreach ($pictures as $picture) {
                 $picture->gallery()->associate($gallery);
@@ -109,8 +109,7 @@ class DashboardProductController extends Controller
             $product->save();
         }
 
-
-        return dd($product);
+        return redirect()->intended('/dashboard/products/')->with('success', 'Product added!');
     }
 
     /**
@@ -121,7 +120,10 @@ class DashboardProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('admin.product.show', [
+            'title' => "Show : $product->name",
+            'product' => $product
+        ]);
     }
 
     /**
@@ -155,7 +157,7 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        return dd($product);
     }
 
     public function checkSlug(Request $r)

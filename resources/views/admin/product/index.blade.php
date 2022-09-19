@@ -1,8 +1,15 @@
 @extends('admin.main')
 @section('dashboard')
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 poppins">My posts</h1>
+        <h1 class="h2 poppins">Products</h1>
     </div>
+
+    @if (session()->has('success'))
+        <div class="alert alert-success alert-dismissible fade show col-lg-8" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <a href="/dashboard/products/create" class="btn btn-primary">New Product</a>
     <div class="table-responsive col-lg-10">
@@ -27,8 +34,8 @@
                         <td>{{ $p->category->name }}</td>
                         <td>{{ $p->price }}</td>
                         <td>{{ $p->discounted_price }}</td>
-                        <td>{{ $p->created_at }}</td>
-                        <td>{{ $p->updated_at }}</td>
+                        <td>{{ $p->created_at->diffForHumans() }}</td>
+                        <td>{{ $p->updated_at->diffForHumans() }}</td>
                         <td>
                             <a href="/dashboard/products/{{ $p->slug }}" class="btn btn-info">
                                 <span data-feather="eye"></span>
