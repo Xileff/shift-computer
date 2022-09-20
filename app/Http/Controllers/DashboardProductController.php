@@ -166,4 +166,9 @@ class DashboardProductController extends Controller
 
         return response()->json(['slug' => $slug]);
     }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }
