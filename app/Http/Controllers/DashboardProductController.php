@@ -9,6 +9,7 @@ use App\Models\Gallery;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Cviebrock\EloquentSluggable\Services\SlugService;
+use Illuminate\Support\Facades\Storage;
 
 class DashboardProductController extends Controller
 {
@@ -134,7 +135,12 @@ class DashboardProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('admin.product.edit', [
+            'title' => "Edit : $product->name",
+            'product' => $product,
+            'brands' => Brand::all(['id', 'name']),
+            'categories' => Category::all(['id', 'name'])
+        ]);
     }
 
     /**
@@ -144,9 +150,73 @@ class DashboardProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(Request $r, Product $product)
     {
-        //
+        $rules_regular = [
+            'name' => 'required|between:10,255',
+            'slug' => 'required',
+            'category_id' => 'required|integer|between:1,' . Category::count(),
+            'brand_id' => 'required|integer|between:1,' . Brand::count(),
+            'price' => 'required|integer',
+            'discounted_price' => 'integer',
+            'weight_in_grams' => 'required|integer',
+            'description' => 'required',
+        ];
+
+        $rules_picture = [
+            'picture0' => 'image',
+            'picture1' => 'image',
+            'picture2' => 'image',
+            'picture3' => 'image',
+            'picture4' => 'image'
+        ];
+
+        if ($r->slug != $product->slug) {
+            $rules_regular['slug'] = 'required|unique:products';
+        }
+
+        $data_regular = $r->validate($rules_regular);
+        $data_picture = $r->validate($rules_picture);
+
+        if (!$r->discounted_price) {
+            $data_regular['discounted_price'] = $data_regular['price'];
+        }
+
+        // Update non picture data
+        Product::where('id', $product->id)->update([
+            'name' => $data_regular['name'],
+            'slug' => $data_regular['slug'],
+            'category_id' => $data_regular['category_id'],
+            'brand_id' => $data_regular['brand_id'],
+            'price' => $data_regular['price'],
+            'discounted_price' => $data_regular['discounted_price'],
+            'weight_in_grams' => $data_regular['weight_in_grams'],
+            'description' => $data_regular['description'],
+        ]);
+
+        // Update picture data
+        $gallery = $product->gallery;
+
+        for ($i = 0; $i < 5; $i++) {
+            if ($r->file("picture$i")) {
+                // Store the new pictures in storage and make new Picture instances
+                $new_picture = Picture::create(['name' => $r->file("picture$i")->store('public/img/products')]);
+
+                // Delete the previous pictures from storage, then update the Picture record in db
+                if ($gallery->pictures->has($i)) {
+                    Storage::delete($gallery->pictures[$i]->name);
+                    $gallery->pictures[$i]->update(['name' => $new_picture->name]);
+                }
+
+                // Or insert a new picture, if the (n)th picture didnt exist before
+                else {
+                    $new_picture->gallery()->associate($gallery);
+                    $new_picture->save();
+                }
+            }
+        }
+
+        return redirect()->intended('/dashboard/products/')->with('success', 'Product updated!');
     }
 
     /**
@@ -157,7 +227,7 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        return dd($product);
     }
 
     public function checkSlug(Request $r)

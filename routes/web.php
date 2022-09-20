@@ -46,5 +46,5 @@ Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
 
 
 // Admin Routes
-Route::prefix('/dashboard/products')->resource('/dashboard/products', DashboardProductController::class)->middleware('admin');
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('admin');
+Route::resource('/dashboard/products', DashboardProductController::class)->middleware('admin');

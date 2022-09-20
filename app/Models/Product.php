@@ -9,8 +9,6 @@ use Cviebrock\EloquentSluggable\Sluggable;
 class Product extends Model
 {
     use HasFactory, Sluggable;
-    public $primaryKey = 'id';
-    protected $table = 'products';
     protected $guarded = ['id'];
     protected $with = ['gallery'];
 
