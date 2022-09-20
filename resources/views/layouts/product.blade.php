@@ -37,7 +37,7 @@
             {{-- Product Details --}}
             <div class="col-md-7 d-flex flex-column px-5" data-aos="fade-down">
                 <h3 class="fw-bold text-success poppins">{{ $product->name }}</h3>
-                <h4 class="poppins">{{ $product->price }}</h4>
+                <h4 class="poppins">{{ $product->discounted_price }}</h4>
 
                 {{-- Stars --}}
                 <div class="d-flex justify-content-start row-stars mb-2">

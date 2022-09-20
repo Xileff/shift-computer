@@ -17,19 +17,24 @@
                 <label class="montserrat">Images</label>
                 <div class="row py-1">
                     <div class="col">
-                        <img src="" alt="" class="img-fluid picture-input cursor-pointer">
+                        <img src="{{ str_replace('public', '/storage', $product->gallery->pictures[0]->name) }}"
+                            alt="" class="img-fluid picture-input cursor-pointer">
                     </div>
                     <div class="col">
-                        <img src="/assets/product/empty.png" alt="" class="img-fluid picture-input cursor-pointer">
+                        <img src="{{ $product->gallery->pictures->has(1) ? str_replace('public', '/storage', $product->gallery->pictures[1]->name) : '/assets/product/empty.png' }}"
+                            alt="" class="img-fluid picture-input cursor-pointer">
                     </div>
                     <div class="col">
-                        <img src="/assets/product/empty.png" alt="" class="img-fluid picture-input cursor-pointer">
+                        <img src="{{ $product->gallery->pictures->has(2) ? str_replace('public', '/storage', $product->gallery->pictures[2]->name) : '/assets/product/empty.png' }}"
+                            alt="" class="img-fluid picture-input cursor-pointer">
                     </div>
                     <div class="col">
-                        <img src="/assets/product/empty.png" alt="" class="img-fluid picture-input cursor-pointer">
+                        <img src="{{ $product->gallery->pictures->has(3) ? str_replace('public', '/storage', $product->gallery->pictures[3]->name) : '/assets/product/empty.png' }}"
+                            alt="" class="img-fluid picture-input cursor-pointer">
                     </div>
                     <div class="col">
-                        <img src="/assets/product/empty.png" alt="" class="img-fluid picture-input cursor-pointer">
+                        <img src="{{ $product->gallery->pictures->has(4) ? str_replace('public', '/storage', $product->gallery->pictures[4]->name) : '/assets/product/empty.png' }}"
+                            alt="" class="img-fluid picture-input cursor-pointer">
                     </div>
                 </div>
             </div>

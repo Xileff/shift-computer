@@ -6,7 +6,6 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
-use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,5 +46,5 @@ Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
 
 
 // Admin Routes
+Route::prefix('/dashboard/products')->resource('/dashboard/products', DashboardProductController::class)->middleware('admin');
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('admin');
-Route::resource('/dashboard/products/', DashboardProductController::class)->middleware('admin');

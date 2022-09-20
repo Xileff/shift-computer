@@ -27,23 +27,23 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($products as $p)
+                @foreach ($products as $product)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $p->name }}</td>
-                        <td>{{ $p->category->name }}</td>
-                        <td>{{ $p->price }}</td>
-                        <td>{{ $p->discounted_price }}</td>
-                        <td>{{ $p->created_at->diffForHumans() }}</td>
-                        <td>{{ $p->updated_at->diffForHumans() }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->category->name }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>{{ $product->discounted_price }}</td>
+                        <td>{{ $product->created_at->diffForHumans() }}</td>
+                        <td>{{ $product->updated_at->diffForHumans() }}</td>
                         <td>
-                            <a href="/dashboard/products/{{ $p->slug }}" class="btn btn-info">
+                            <a href="/dashboard/products/{{ $product->slug }}" class="btn btn-info">
                                 <span data-feather="eye"></span>
                             </a>
-                            <a href="/dashboard/products/{{ $p->slug }}/edit" class="btn btn-warning">
+                            <a href="/dashboard/products/{{ $product->slug }}/edit" class="btn btn-warning">
                                 <span data-feather="edit"></span>
                             </a>
-                            <form action="/dashboard/products/{{ $p->slug }}" method="post" class="d-inline">
+                            <form action="/dashboard/products/{{ $product->slug }}" method="post" class="d-inline">
                                 @method('delete')
                                 @csrf
                                 <button onclick="return confirm('Are you sure?')" class="btn btn-danger border-0"><span

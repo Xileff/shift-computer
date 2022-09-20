@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Product;
 use App\Models\Brand;
 use App\Models\Picture;
 use App\Models\Gallery;
-use Cviebrock\EloquentSluggable\Services\SlugService;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardProductController extends Controller
 {
@@ -17,7 +17,6 @@ class DashboardProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    // Show all products
     public function index()
     {
         return view('admin.product.index', [
@@ -46,6 +45,7 @@ class DashboardProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $r)
     {
         $rules = [
@@ -157,7 +157,7 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        return dd($product);
+        //
     }
 
     public function checkSlug(Request $r)
