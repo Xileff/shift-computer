@@ -227,7 +227,15 @@ class DashboardProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        return dd($product);
+        // TODO : refactor store() and define destroy()
+        $pictures = $product->gallery->pictures;
+        foreach ($pictures as $picture) {
+            Storage::delete($picture->name);
+        }
+
+        $product->delete();
+
+        return redirect()->intended('/dashboard/products/')->with('success', 'Product deleted');
     }
 
     public function checkSlug(Request $r)
