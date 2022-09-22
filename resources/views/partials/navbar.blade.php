@@ -24,7 +24,7 @@
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Rakitin</a>
+                    <a class="nav-link" aria-current="page" href="/cart">Cart</a>
                 </li>
             </ul>
             <form class="d-flex">

@@ -11,8 +11,11 @@ use App\Models\Picture;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\Review;
+use App\Models\Cart;
+use App\Models\CartItem;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
+
 
 class DatabaseSeeder extends Seeder
 {
@@ -193,6 +196,23 @@ class DatabaseSeeder extends Seeder
             "text" => "Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore sapiente veritatis earum. Non quae cum esse officiis quis. Aliquid, in.",
             "user_id" => "1",
             "product_id" => "1"
+        ]);
+
+        Cart::create(['user_id' => 1]);
+        CartItem::create([
+            'cart_id' => 1,
+            'product_id' => 1,
+            'qty' => 2
+        ]);
+        CartItem::create([
+            'cart_id' => 1,
+            'product_id' => 2,
+            'qty' => 2
+        ]);
+        CartItem::create([
+            'cart_id' => 1,
+            'product_id' => 3,
+            'qty' => 2
         ]);
     }
 }

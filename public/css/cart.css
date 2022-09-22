@@ -1,0 +1,34 @@
+.cart-detail-image-wrapper {
+    border-radius: 0.5rem;
+    width: 100px;
+    height: 100px;
+}
+
+.cart-detail-image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 0.5rem;
+}
+
+.qty {
+    text-decoration: underline;
+    text-decoration-color: green;
+}
+
+/* @media screen and  */
+
+@media screen and (min-width: 768px) {
+    .cart-detail-image-wrapper {
+        width: 180px;
+        height: 180px;
+    }
+}
+
+@media screen and (min-width: 992px) {
+    .cart-detail-image-wrapper {
+        width: 200px;
+        height: 200px;
+    }
+}

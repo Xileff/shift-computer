@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartItemController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardProductController;
 use App\Http\Controllers\LoginController;
@@ -40,10 +41,10 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->middleware('guest');
 
-// User Profile
+// Logged In User Routes
 Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
 Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
-
+Route::resource('/cart', CartItemController::class)->middleware('auth');
 
 // Admin Routes
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('admin');

@@ -32,6 +32,12 @@ class Product extends Model
         return $this->hasMany(Review::class, 'id');
     }
 
+    public function cartItem()
+    {
+        return $this->belongsToMany(CartItem::class, 'product_id');
+        // refers to CartItem table and the its column for the product id
+    }
+
     public function sluggable(): array
     {
         return [
