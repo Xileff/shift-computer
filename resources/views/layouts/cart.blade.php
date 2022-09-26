@@ -19,11 +19,12 @@
                     </div>
                     <div class="mt-auto d-flex">
                         <div class="me-auto d-flex">
-                            <form action="/cart/{{ $c->product->id }}" method="post">
+                            <form action="/cartItems/{{ $c->product->id }}" method="post">
                                 @csrf
                                 @method('put')
                                 {{-- Add more --}}
-                                <button type="submit" class="btn">
+                                <input hidden type="number" value="{{ $c->qty - 1 }}" name="qty" class="qtyMinus">
+                                <button type="submit" class="btn btn-edit">
                                     <i data-feather="minus-circle" class="text-success"></i>
                                 </button>
                             </form>
@@ -33,17 +34,18 @@
                                 <p class="qty text-center ">{{ $c->qty }}</p>
                             </div>
 
-                            <form action="/cart/{{ $c->product->id }}" method="post">
+                            <form action="/cartItems/{{ $c->product->id }}" method="post">
                                 @csrf
                                 @method('put')
                                 {{-- Reduce --}}
-                                <button type="submit" class="btn">
+                                <input hidden type="number" value="{{ $c->qty + 1 }}" name="qty" class="qtyPlus">
+                                <button type="submit" class="btn btn-edit">
                                     <i data-feather="plus-circle" class="text-success"></i>
                                 </button>
                             </form>
                         </div>
                         <div class="ms-auto">
-                            <form action="/cart/{{ $c->product->id }}" method="post">
+                            <form action="/cartItems/{{ $c->product->id }}" method="post">
                                 @csrf
                                 @method('delete')
                                 {{-- Delete --}}
@@ -60,4 +62,23 @@
     <div class="row w-100 fixed-bottom bg-light py-2 px-1 shadow-lg">
         <button class="btn btn-success ms-auto rounded-5 w-25 py-2 px-2">Check Out</button>
     </div>
+    <input type="hidden" id="cartId" value="{{ $cart->id }}">
+    <script src="/js/cart.js"></script>
+    <script>
+        let changed = false;
+
+        const cartId = document.querySelector('input#cartId').value
+        const changes = [];
+
+        // Test request cart item
+        fetch(`/cartItems/${cartId}`).then(res => res.json()).then(data => {
+            console.log(data)
+        })
+
+        // Save changes by sending a request to back end
+        window.onbeforeunload = e => {
+            e.preventDefault()
+            console.log(1)
+        }
+    </script>
 @endsection

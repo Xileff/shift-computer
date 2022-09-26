@@ -44,7 +44,8 @@ Route::post('/register', [RegisterController::class, 'store'])->middleware('gues
 // Logged In User Routes
 Route::get('/profile', [UserController::class, 'index'])->middleware('auth');
 Route::put('/profile', [UserController::class, 'update'])->middleware('auth');
-Route::resource('/cart', CartItemController::class)->middleware('auth');
+Route::get('/cart', [CartItemController::class, 'index'])->middleware('auth');
+Route::resource('/cartItems', CartItemController::class)->middleware('auth');
 
 // Admin Routes
 Route::get('/dashboard/products/checkSlug', [DashboardProductController::class, 'checkSlug'])->middleware('admin');

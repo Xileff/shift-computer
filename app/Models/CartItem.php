@@ -22,4 +22,9 @@ class CartItem extends Model
         return $this->hasOne(Product::class, 'id');
         // refers to Product table and its id column
     }
+
+    public function getRouteKeyName()
+    {
+        return 'id';
+    }
 }
